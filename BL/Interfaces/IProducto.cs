@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DL
+namespace BL.Interfaces
 {
-    public class Class1
+    public interface IProducto
     {
+        ML.Result GetAll();
+
     }
+
 }
