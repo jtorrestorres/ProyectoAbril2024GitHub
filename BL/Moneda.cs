@@ -13,9 +13,18 @@ namespace BL
             return 1;
         }
 
-        public static string Add()
+        public string Add()
         {
             return "Error";
         }
+
+
+
+        // CAE
+
+        //CAE_AulaVirtual                    //CAE_CredencialMultiplantel
+
+
+        //merge
     }
 }

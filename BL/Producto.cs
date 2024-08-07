@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Common;
 
 namespace BL
 {
@@ -60,11 +61,12 @@ namespace BL
                     }
                     result.Correct = true;
                 }
-
+                
 
             }
             catch (Exception ex)
             {
+                //dbConnection.Close();
                 result.Correct = false;
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
