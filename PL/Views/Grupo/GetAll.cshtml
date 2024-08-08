@@ -46,6 +46,7 @@
                                     <td>@grupo.Nombre</td>
                                     <td>@grupo.Turno</td>
                                     <td>@grupo.Generacion</td>
+                                    <td>@grupo.Carrera.Nombre</td>
                                     <td><a class="btn btn-danger" href="@Url.Action("Delete", "Grupo", new {idGrupo = grupo.IdGrupo})" onclick="return confirm('Seguro que desea eliminar el registro');" })"><i class="bi bi-trash-fill"></i></a></td>
                                 </tr>
 
