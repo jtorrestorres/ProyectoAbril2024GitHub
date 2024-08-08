@@ -68,10 +68,10 @@ namespace BL
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
             }
-            finally
-            {
-                Conexion.GetInstancia().CloseConnection();
-            }
+            //finally
+            //{
+            //    Conexion.GetInstancia().CloseConnection();
+            //}
 
             return result;
 
@@ -114,10 +114,10 @@ namespace BL
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
             }
-            finally
-            {
-                Conexion.GetInstancia().CloseConnection();
-            }
+            //finally
+            //{
+            //    Conexion.GetInstancia().CloseConnection();
+            //}
 
             return result;
 
