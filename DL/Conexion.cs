@@ -16,9 +16,6 @@ namespace DL
 
         private Conexion() //Obtiene la cadena del web.config y la abre
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ProyectoAbril2024GitHub"].ToString(); ;
-            sqlConnection = new SqlConnection(connectionString);
-            sqlConnection.Open();
         }
 
         public static Conexion GetInstancia()
@@ -40,6 +37,10 @@ namespace DL
 
         public SqlConnection GetConnection()
         {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ProyectoAbril2024GitHub"].ToString(); ;
+            sqlConnection = new SqlConnection(connectionString);
+            sqlConnection.Open();
+
             return sqlConnection;
         }
 
