@@ -1,40 +1,48 @@
-﻿@{
+﻿@model List<ML.Materia>
+
+@{
     ViewBag.Title = "Materias";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Materias</h2>
-
 <p>
-    <a href="@Url.Action("AddMateria", "Materia")" class="btn btn-primary">Agregar nueva materia</a>
+    <a href="@Url.Action("AddMateria", "Materia")" class="btn btn-primary">Agregar nueva Materia</a>
 </p>
+@if (Model != null && Model.Any())
+{
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Costo</th>
-            <th>Créditos</th>
-            <th>Editar</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@item.IdMateria</td>
-                <td>@item.Nombre</td>
-                <td>@item.Descripcion</td>
-                <td>@item.Costo</td>
-                <td>@item.Creditos</td>
-                <td>
-                    <a href="@Url.Action("UpdateMateria", "Materia", new { id = item.IdMateria })" class="btn btn-warning">Edit</a>
-                    <a href="@Url.Action("DeleteMateria", "Materia", new { id = item.IdMateria })" class="btn btn-danger">Delete</a>
-                </td>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Costo</th>
+                <th>Créditos</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(item?.IdMateria.ToString() ?? "N/A")</td>
+                    <td>@(item?.Nombre ?? "N/A")</td>
+                    <td>@(item?.Descripcion ?? "N/A")</td>
+                    <td>@(item?.Costo.ToString("C") ?? "N/A")</td>
+                    <td>@(item?.Creditos.ToString() ?? "N/A")</td>
+                    <td>
+                        <a href="@Url.Action("UpdateMateria", "Materia", new { id = item?.IdMateria })" class="btn btn-warning">Edit</a>
+                        <a href="@Url.Action("DeleteMateria", "Materia", new { id = item?.IdMateria })" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No se encontraron materias.</p>
+}

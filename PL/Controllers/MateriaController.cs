@@ -31,7 +31,7 @@ namespace PL.Controllers
             }
         }
 
-        public ActionResult AddMateria(ML.Materia materia)
+        public ActionResult Form(ML.Materia materia)
         {
             ML.Result result = new ML.Result();
             BL.Materia materiaBL = new BL.Materia();

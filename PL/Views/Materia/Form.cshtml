@@ -1,0 +1,39 @@
+﻿@model ML.Materia
+
+@{
+    ViewBag.Title = "Agregar Materia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Materia</h2>
+
+@using (Html.BeginForm("Form", "Materia", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nombre)
+        @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Descripcion)
+        @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Costo)
+        @Html.TextBoxFor(m => m.Costo, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Creditos)
+        @Html.TextBoxFor(m => m.Creditos, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="@Url.Action("Index", "Materia")" class="btn btn-secondary">Cancel</a>
+}@{
+    ViewBag.Title = "Form";
+}
+
+<h2>Form</h2>
+
