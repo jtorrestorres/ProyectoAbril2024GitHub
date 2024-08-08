@@ -9,5 +9,6 @@ namespace BL.Interfaces
     public interface IGrupo
     {
         ML.Result GetAll();
+        ML.Result Delete(ML.Grupo grupo);
     }
 }

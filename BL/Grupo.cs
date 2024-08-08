@@ -76,6 +76,53 @@ namespace BL
 
             return result;
 
+        }
+        public ML.Result Delete(ML.Grupo grupo)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+
+                DL.Conexion dbConnection = DL.Conexion.GetInstancia();
+                SqlConnection context = dbConnection.GetConnection();
+
+                context.Open();
+
+                var query = "GrupoDelete";
+
+                SqlCommand command = new SqlCommand(query, context);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@IdGrupo", grupo.IdGrupo);
+                
+
+                int RowAffected = command.ExecuteNonQuery();
+
+                if (RowAffected > 0)
+                {
+                    result.Correct = true;
+                }
+                else
+                {
+                    result.Correct = false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                //dbConnection.Close();
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+            }
+            finally
+            {
+                Conexion.GetInstancia().CloseConnection();
+            }
+
+            return result;
+
 
         }
     }
