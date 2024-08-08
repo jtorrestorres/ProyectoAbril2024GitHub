@@ -86,7 +86,8 @@ namespace BL
 
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
-                
+                context.Close();
+                context.Open();
 
                 var query = "GrupoDelete";
 
@@ -94,8 +95,7 @@ namespace BL
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@IdGrupo", grupo.IdGrupo);
 
-                context.Close();
-                context.Open();
+                
 
                 int RowAffected = command.ExecuteNonQuery();
 

@@ -34,7 +34,7 @@ namespace PL.Controllers
             }
             else
             {
-                ViewBag.Mensaje = "Se ha eliminado el registro.";
+                ViewBag.Mensaje = "No se ha eliminado el registro" + result.ErrorMenssage;
             }
 
             return PartialView("Modal");
