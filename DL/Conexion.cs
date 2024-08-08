@@ -37,7 +37,7 @@ namespace DL
 
         public SqlConnection GetConnection()
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ProyectoAbril2024GitHub"].ToString(); ;
+            string connectionString = GetConnectionString();
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
