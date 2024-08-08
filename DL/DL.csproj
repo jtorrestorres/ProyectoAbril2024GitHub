@@ -51,60 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alumno.cs">
-      <DependentUpon>ProyectoAbril2024GitHub.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Carrera.cs">
-      <DependentUpon>ProyectoAbril2024GitHub.tt</DependentUpon>
-    </Compile>
     <Compile Include="Conexion.cs" />
-    <Compile Include="Grupo.cs">
-      <DependentUpon>ProyectoAbril2024GitHub.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Materia.cs">
-      <DependentUpon>ProyectoAbril2024GitHub.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProyectoAbril2024GitHub.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProyectoAbril2024GitHub.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProyectoAbril2024GitHub.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProyectoAbril2024GitHub.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProyectoAbril2024GitHub.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProyectoAbril2024GitHub.edmx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="ProyectoAbril2024GitHub.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ProyectoAbril2024GitHub.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="ProyectoAbril2024GitHub.edmx.diagram">
-      <DependentUpon>ProyectoAbril2024GitHub.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ProyectoAbril2024GitHub.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ProyectoAbril2024GitHub.Context.cs</LastGenOutput>
-      <DependentUpon>ProyectoAbril2024GitHub.edmx</DependentUpon>
-    </Content>
-    <Content Include="ProyectoAbril2024GitHub.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProyectoAbril2024GitHub.edmx</DependentUpon>
-      <LastGenOutput>ProyectoAbril2024GitHub.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
