@@ -240,7 +240,7 @@ namespace BL
                 SqlConnection context = dbConnection.GetConnection();
 
 
-                var query = "GrupoAdd";
+                var query = "GrupoUpdate";
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
