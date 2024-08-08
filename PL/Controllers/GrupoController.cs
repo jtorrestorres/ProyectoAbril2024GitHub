@@ -42,7 +42,7 @@ namespace PL.Controllers
                 else
                 {
                     ViewBag.Mensaje = "No se ha encontrado el registro" + result.ErrorMessage;
-                    return PartialView("ModalCard");
+                    return PartialView("Modal");
                 }
             }
             else
