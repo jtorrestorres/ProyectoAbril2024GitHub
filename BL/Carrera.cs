@@ -22,7 +22,7 @@ namespace BL
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
 
-                context.Open();
+                //context.Open();
 
                 var query = "CarreraGetAll";
 
