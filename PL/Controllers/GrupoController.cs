@@ -59,7 +59,7 @@ namespace PL.Controllers
             ML.Result result = new ML.Result();
             if (grupo.IdGrupo>0)
             {
-
+                result = grupoBL.Update(grupo);
             }
             else
             {
