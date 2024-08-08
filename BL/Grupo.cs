@@ -21,7 +21,7 @@ namespace BL
 
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
-                //context.Close();
+
                 //context.Open();
 
                 var query = "GrupoGetAll";
@@ -64,7 +64,6 @@ namespace BL
             }
             catch (Exception ex)
             {
-                //dbConnection.Close();
                 result.Correct = false;
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
@@ -86,7 +85,6 @@ namespace BL
 
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
-                //context.Close();
 
                 //context.Open();
 
