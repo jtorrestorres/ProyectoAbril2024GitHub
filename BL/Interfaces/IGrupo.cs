@@ -10,5 +10,6 @@ namespace BL.Interfaces
     {
         ML.Result GetAll();
         ML.Result Delete(ML.Grupo grupo);
+        ML.Result GetById(int idGrupo);
     }
 }
