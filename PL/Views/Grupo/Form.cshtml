@@ -1,0 +1,37 @@
+﻿@model ML.Grupo
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Form", "Grupo", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.IdGrupo)
+
+    <div class="row mb-3">
+        <div class="col-3">
+            <h3>Formulario</h3>
+        </div>
+    </div>
+    <br />
+    <div class="row mb-3">
+        <div class="col-3">
+            @Html.LabelFor(model => model.Nombre)
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+            @Html.LabelFor(model => model.Turno)
+            @Html.TextBoxFor(model => model.Turno, new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+            @Html.LabelFor(model => model.Generacion)
+            @Html.TextBoxFor(model => model.Generacion, new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+            @Html.LabelFor(model => model.Carrera)
+            @Html.DropDownListFor(model => model.Carrera.IdCarrera, new SelectList(Model.Rol.Roles, "IdRol", "Nombre"), "Selecciona un rol ", new { @class = "form-control" })
+            <br />
+        </div>
+    </div>
+}
+

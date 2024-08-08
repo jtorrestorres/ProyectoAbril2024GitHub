@@ -22,6 +22,12 @@ namespace PL.Controllers
         }
 
         [HttpGet]
+        public ActionResult Form(int idGrupo)
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Delete(int idGrupo)
         {
             ML.Grupo grupo = new ML.Grupo();
