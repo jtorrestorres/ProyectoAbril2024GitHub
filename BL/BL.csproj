@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carrera.cs" />
     <Compile Include="Grupo.cs" />
+    <Compile Include="Interfaces\ICarrera.cs" />
     <Compile Include="Interfaces\IGrupo.cs" />
     <Compile Include="Moneda.cs" />
     <Compile Include="Producto.cs" />
