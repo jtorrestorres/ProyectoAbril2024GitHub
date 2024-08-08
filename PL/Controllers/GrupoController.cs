@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ML;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,21 +28,29 @@ namespace PL.Controllers
         {
             ML.Grupo grupo=new ML.Grupo();
             grupo.Carrera =new ML.Carrera();
+            ML.Result resultCarrera = carreraBL.GetAll();
 
             if (idGrupo > 0)
             {
                 ML.Result result = grupoBL.GetById(idGrupo);
                 if (result.Correct)
                 {
-                    ML.Result resultCarrera = carreraBL.GetAll();
+                    grupo = (ML.Grupo)result.Object;
+                    grupo.Carrera.Carreras = resultCarrera.Objects;
+
                 }
                 else
                 {
-
+                    ViewBag.Mensaje = "No se ha encontrado el registro" + result.ErrorMessage;
+                    return PartialView("ModalCard");
                 }
             }
+            else
+            {
+                grupo.Carrera.Carreras = resultCarrera.Objects;
+            }
 
-            return View();
+            return View(grupo);
         }
 
         [HttpGet]
