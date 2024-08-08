@@ -9,6 +9,7 @@ namespace PL.Controllers
     public class GrupoController : Controller
     {
         BL.Grupo grupoBL = new BL.Grupo();
+        BL.Carrera carreraBL = new BL.Carrera();
         // GET: Grupo
         [HttpGet]
         public ActionResult GetAll()
@@ -24,6 +25,22 @@ namespace PL.Controllers
         [HttpGet]
         public ActionResult Form(int idGrupo)
         {
+            ML.Grupo grupo=new ML.Grupo();
+            grupo.Carrera =new ML.Carrera();
+
+            if (idGrupo > 0)
+            {
+                ML.Result result = grupoBL.GetById(idGrupo);
+                if (result.Correct)
+                {
+                    ML.Result resultCarrera = carreraBL.GetAll();
+                }
+                else
+                {
+
+                }
+            }
+
             return View();
         }
 
