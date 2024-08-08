@@ -28,7 +28,16 @@ namespace PL.Controllers
             grupo.IdGrupo = idGrupo;
             ML.Result result = grupoBL.Delete(grupo);
 
-            return View(result);
+            if (result.Correct)
+            {
+                ViewBag.Mensaje = "Se ha eliminado el registro.";
+            }
+            else
+            {
+                ViewBag.Mensaje = "Se ha eliminado el registro.";
+            }
+
+            return PartialView("Modal");
         }
     }
 }
