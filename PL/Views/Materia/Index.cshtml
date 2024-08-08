@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Materias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Materias</h2>
+
+<p>
+    <a href="@Url.Action("AddMateria", "Materia")" class="btn btn-primary">Agregar nueva materia</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Costo</th>
+            <th>Créditos</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdMateria</td>
+                <td>@item.Nombre</td>
+                <td>@item.Descripcion</td>
+                <td>@item.Costo</td>
+                <td>@item.Creditos</td>
+                <td>
+                    <a href="@Url.Action("UpdateMateria", "Materia", new { id = item.IdMateria })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("DeleteMateria", "Materia", new { id = item.IdMateria })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

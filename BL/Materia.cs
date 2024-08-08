@@ -1,4 +1,5 @@
 ﻿using BL.Interfaces;
+using DL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -60,6 +61,11 @@ namespace BL
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
             }
+            finally
+            {
+                Conexion.GetInstancia().CloseConnection();
+            }
+
             return result;
         }
         public ML.Result AddMateria(ML.Materia materia)
@@ -98,6 +104,11 @@ namespace BL
                 result.Correct = false;
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
+            }
+
+            finally
+            {
+                Conexion.GetInstancia().CloseConnection();
             }
            
             return result;
@@ -140,11 +151,16 @@ namespace BL
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
             }
-          
+            
+            finally
+            {
+                Conexion.GetInstancia().CloseConnection();
+            }
+
             return result;
         }
 
-        public ML.Result DeleteMateria(int id)
+        public ML.Result DeleteMateria(int idMateria)
         {
             ML.Result result = new ML.Result();
             try
@@ -153,14 +169,36 @@ namespace BL
                 SqlConnection context = dbConnection.GetConnection();
 
                 context.Open();
-                var query = "DeleteMateria";
+                var query = "DeleteMateria"; 
+                SqlCommand command = new SqlCommand(query, context);
+                command.CommandType = CommandType.StoredProcedure;
+
+                
+                command.Parameters.AddWithValue("@IdMateria", idMateria);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    result.Correct = true;
+                }
+                else
+                {
+                    result.Correct = false;
+                    result.ErrorMessage = "No se pudo eliminar la materia.";
+                }
             }
-            catch (Exception ex) 
-            { 
-                result.Correct = false; 
-                result.ErrorMessage = ex.Message; 
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
                 result.Ex = ex;
             }
+            finally
+            {
+                Conexion.GetInstancia().GetConnection();
+            }
+
             return result;
         }
     }

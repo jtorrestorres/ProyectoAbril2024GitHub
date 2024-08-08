@@ -11,6 +11,6 @@ namespace BL.Interfaces
         ML.Result GetAllMateria();
         ML.Result AddMateria(ML.Materia materia);
         ML.Result UpdateMateria(ML.Materia materia);
-        ML.Result DeleteMateria(int id);
+        ML.Result DeleteMateria(int idMateria);
     }
 }
