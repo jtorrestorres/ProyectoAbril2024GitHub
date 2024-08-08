@@ -48,7 +48,7 @@ namespace BL
                     foreach (DataRow fila in tableMateria.Rows)
                     {
                         //ML.Materia materia = new ML.Materia();
-
+                        
                         //materia.IdMateria = int.Parse(fila[0].ToString());
                         //materia.Nombre = fila[1].ToString();
                         //materia.Descripcion = fila[2].ToString();
