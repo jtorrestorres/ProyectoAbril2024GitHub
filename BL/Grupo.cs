@@ -229,6 +229,52 @@ namespace BL
             return result;
         }
 
+        public ML.Result Update(ML.Grupo grupo)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+
+                DL.Conexion dbConnection = DL.Conexion.GetInstancia();
+                SqlConnection context = dbConnection.GetConnection();
+
+
+                var query = "GrupoAdd";
+
+                SqlCommand command = new SqlCommand(query, context);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@IdGrupo", grupo.IdGrupo);
+                command.Parameters.AddWithValue("@Nombre", grupo.Nombre);
+                command.Parameters.AddWithValue("@Turno", grupo.Turno);
+                command.Parameters.AddWithValue("@Generacion", grupo.Generacion);
+                command.Parameters.AddWithValue("@IdCarrera", grupo.Carrera.IdCarrera);
+
+
+                int RowAffected = command.ExecuteNonQuery();
+
+                if (RowAffected > 0)
+                {
+                    result.Correct = true;
+                }
+                else
+                {
+                    result.Correct = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+            }
+            finally
+            {
+                Conexion.GetInstancia().CloseConnection();
+            }
+            return result;
+        }
+
 
     }
 }
