@@ -56,8 +56,25 @@ namespace PL.Controllers
         [HttpPost]
         public ActionResult Form(ML.Grupo grupo)
         {
-            
-            return View();
+            ML.Result result = new ML.Result();
+            if (grupo.IdGrupo>0)
+            {
+
+            }
+            else
+            {
+                result = grupoBL.Add(grupo);
+            }
+
+            if (result.Correct)
+            {
+                ViewBag.Mensaje = "Se agrego correctamente.";
+            }
+            else
+            {
+                ViewBag.Mensaje = "No se agrego correctamente " + result.ErrorMessage;
+            }
+            return PartialView("Modal");
         }
 
         [HttpGet]
