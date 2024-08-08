@@ -87,6 +87,7 @@ namespace BL
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
                 context.Close();
+
                 context.Open();
 
                 var query = "GrupoDelete";
