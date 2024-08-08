@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IMateria.cs" />
+    <Compile Include="Materia.cs" />
     <Compile Include="Moneda.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Interfaces\IProducto.cs" />
