@@ -96,7 +96,7 @@ namespace BL
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@IdGrupo", grupo.IdGrupo);
 
-                
+                context.Open();
 
                 int RowAffected = command.ExecuteNonQuery();
 
