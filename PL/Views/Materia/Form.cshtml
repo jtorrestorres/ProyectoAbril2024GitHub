@@ -1,14 +1,16 @@
 ﻿@model ML.Materia
 
 @{
-    ViewBag.Title = "Agregar Materia";
+    ViewBag.Title = Model.IdMateria == 0 ? "Agregar Materia" : "Editar Materia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add Materia</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Form", "Materia", FormMethod.Post))
 {
+    @Html.HiddenFor(m => m.IdMateria) 
+
     <div class="form-group">
         @Html.LabelFor(m => m.Nombre)
         @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
@@ -30,10 +32,5 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>
-    <a href="@Url.Action("Index", "Materia")" class="btn btn-secondary">Cancel</a>
-}@{
-    ViewBag.Title = "Form";
+    <a href="@Url.Action("Index", "Materia")" class="btn btn-secondary">Cancelar</a>
 }
-
-<h2>Form</h2>
-

@@ -3,6 +3,7 @@ using DL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -21,7 +22,7 @@ namespace BL
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
 
-                context.Open();
+                //context.Open();
 
                 var query = "MateriaGetAll";
                 SqlCommand command = new SqlCommand(query, context);
@@ -68,6 +69,60 @@ namespace BL
 
             return result;
         }
+
+        public ML.Result GetByIdMateria(int idMateria)
+        {
+            ML.Result result = new ML.Result();
+            try
+            {
+                DL.Conexion dbConnection = DL.Conexion.GetInstancia();
+                SqlConnection context = dbConnection.GetConnection();
+
+                var query = "MateriaGetById";
+                SqlCommand command = new SqlCommand(query, context);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@IdMateria", idMateria);
+
+                DataTable tableMateria = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                adapter.Fill(tableMateria);
+
+                if (tableMateria.Rows.Count > 0)
+                {
+                    DataRow row = tableMateria.Rows[0];
+                    ML.Materia materia = new ML.Materia();
+
+                    materia.IdMateria = int.Parse(row["IdMateria"].ToString());
+                    materia.Nombre = row["Nombre"].ToString();
+                    materia.Descripcion = row["Descripcion"].ToString();
+                    materia.Costo = decimal.Parse(row["Costo"].ToString());
+                    materia.Creditos = int.Parse(row["Creditos"].ToString());
+
+                    result.Object = materia;
+                    result.Correct = true;
+                }
+                else
+                {
+                    result.Correct = false;
+                    result.ErrorMessage = "No se encontró la materia.";
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+            }
+            finally
+            {
+                Conexion.GetInstancia().CloseConnection();
+            }
+
+            return result;
+        }
+
         public ML.Result AddMateria(ML.Materia materia)
         {
             ML.Result result = new ML.Result();
@@ -76,12 +131,10 @@ namespace BL
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
 
-                context.Open();
-                var query = "AddMateria"; 
+                var query = "MateriaAdd";
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
 
-              
                 command.Parameters.AddWithValue("@Nombre", materia.Nombre);
                 command.Parameters.AddWithValue("@Descripcion", materia.Descripcion);
                 command.Parameters.AddWithValue("@Costo", materia.Costo);
@@ -105,12 +158,11 @@ namespace BL
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
             }
-
             finally
             {
                 Conexion.GetInstancia().CloseConnection();
             }
-           
+
             return result;
         }
         public ML.Result UpdateMateria(ML.Materia materia)
@@ -121,7 +173,7 @@ namespace BL
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
 
-                context.Open();
+                //context.Open();
                 var query = "UpdateMateria"; 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
@@ -151,7 +203,7 @@ namespace BL
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
             }
-            
+
             finally
             {
                 Conexion.GetInstancia().CloseConnection();
@@ -168,7 +220,7 @@ namespace BL
                 DL.Conexion dbConnection = DL.Conexion.GetInstancia();
                 SqlConnection context = dbConnection.GetConnection();
 
-                context.Open();
+                //context.Open();
                 var query = "DeleteMateria"; 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;

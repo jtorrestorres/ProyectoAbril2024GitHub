@@ -16,14 +16,12 @@ namespace DL
 
         private Conexion() //Obtiene la cadena del web.config y la abre
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["JTorresProgramacionNCapas"].ToString(); ;
-            sqlConnection = new SqlConnection(connectionString);
-            sqlConnection.Open();
+           
         }
 
         public static Conexion GetInstancia()
         {
-            if(_conexion == null)
+            if (_conexion == null)
             {
                 _conexion = new Conexion();
             }
@@ -34,12 +32,15 @@ namespace DL
 
         public static string GetConnectionString()
         {
-            return System.Configuration.ConfigurationManager.ConnectionStrings["JTorresProgramacionNCapas"].ToString();
+            return System.Configuration.ConfigurationManager.ConnectionStrings["ProyectoAbril2024GitHub"].ToString();
         }
 
 
         public SqlConnection GetConnection()
         {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ProyectoAbril2024GitHub"].ToString(); ;
+            sqlConnection = new SqlConnection(connectionString);
+            sqlConnection.Open();
             return sqlConnection;
         }
 

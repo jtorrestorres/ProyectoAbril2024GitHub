@@ -6,12 +6,12 @@
 }
 
 <h2>Materias</h2>
-<p>
-    <a href="@Url.Action("AddMateria", "Materia")" class="btn btn-primary">Agregar nueva Materia</a>
-</p>
+
 @if (Model != null && Model.Any())
 {
-
+    <p>
+        <a href="@Url.Action("Form", "Materia")" class="btn btn-primary">Agregar nueva Materia</a>
+    </p>
 
     <table class="table table-striped">
         <thead>
@@ -34,8 +34,9 @@
                     <td>@(item?.Costo.ToString("C") ?? "N/A")</td>
                     <td>@(item?.Creditos.ToString() ?? "N/A")</td>
                     <td>
-                        <a href="@Url.Action("UpdateMateria", "Materia", new { id = item?.IdMateria })" class="btn btn-warning">Edit</a>
-                        <a href="@Url.Action("DeleteMateria", "Materia", new { id = item?.IdMateria })" class="btn btn-danger">Delete</a>
+                        <!-- Cambiado para redirigir al formulario de edición -->
+                        <a href="@Url.Action("Form", "Materia", new { id = item?.IdMateria })" class="btn btn-warning">Editar</a>
+                        <a href="@Url.Action("DeleteMateria", "Materia", new { id = item?.IdMateria })" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
             }
