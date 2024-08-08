@@ -53,6 +53,13 @@ namespace PL.Controllers
             return View(grupo);
         }
 
+        [HttpPost]
+        public ActionResult Form(ML.Grupo grupo)
+        {
+            
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Delete(int idGrupo)
         {
