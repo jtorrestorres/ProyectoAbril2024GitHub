@@ -12,7 +12,8 @@ namespace PL.Controllers
         [HttpGet]
         public ActionResult GetAll()
         {
-            ML.Result result = BL.Grupo.GetAll();
+            BL.Grupo grupoBL = new BL.Grupo();
+            ML.Result result = grupoBL.GetAll();
             ML.Grupo grupo = new ML.Grupo();
 
             grupo.Grupos = result.Objects;
