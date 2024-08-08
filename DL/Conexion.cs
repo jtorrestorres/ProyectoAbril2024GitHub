@@ -16,7 +16,7 @@ namespace DL
 
         private Conexion() //Obtiene la cadena del web.config y la abre
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["JTorresProgramacionNCapas"].ToString(); ;
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ProyectoAbril2024GitHub"].ToString(); ;
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
         }
@@ -34,7 +34,7 @@ namespace DL
 
         public static string GetConnectionString()
         {
-            return System.Configuration.ConfigurationManager.ConnectionStrings["JTorresProgramacionNCapas"].ToString();
+            return System.Configuration.ConfigurationManager.ConnectionStrings["ProyectoAbril2024GitHub"].ToString();
         }
 
 
