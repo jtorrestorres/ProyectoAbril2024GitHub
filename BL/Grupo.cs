@@ -111,7 +111,6 @@ namespace BL
             }
             catch (Exception ex)
             {
-                //dbConnection.Close();
                 result.Correct = false;
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
