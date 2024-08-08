@@ -215,8 +215,6 @@ namespace BL
                 {
                     result.Correct = false;
                 }
-
-
             }
             catch (Exception ex)
             {
