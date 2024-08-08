@@ -12,7 +12,7 @@ namespace BL
 {
     public class Grupo : IGrupo
     {
-        public ML.Result GetAll()
+        public static ML.Result GetAll()
         {
             ML.Result result = new ML.Result();
 

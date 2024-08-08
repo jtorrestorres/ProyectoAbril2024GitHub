@@ -1,0 +1,62 @@
+﻿@model ML.Grupo
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h5>Selecciona un usuario para eliminar o editar. Selecciona + para agregar un nuevo grupo.</h5>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1 offset-11">
+            @Html.ActionLink("+", "Form", new { idGrupo = 0 }, new { @class = "btn btn-success" })
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-12">
+                @if (Model.Grupos.Count == 0)
+                {
+                    <h2>No hay registros.</h2>
+                }
+                else
+                {
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Editar</th>
+                                <th>IdGrupo</th>
+                                <th>Nombre</th>
+                                <th>Turno</th>
+                                <th>Generacion</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (ML.Grupo grupo in Model.Grupos)
+                            {
+                                <tr>
+                                    <td><a class="btn btn-warning" href="@Url.Action("Form", "Grupo", new {idGrupo= grupo.IdGrupo})"><i class="bi bi-pencil-square"></i></a></td>
+                                    <td>@grupo.IdGrupo</td>
+                                    <td>@grupo.Nombre</td>
+                                    <td>@grupo.Turno</td>
+                                    <td>@grupo.Generacion</td>
+                                    <td><a class="btn btn-danger" href="@Url.Action("Delete", "Grupo", new {idGrupo = grupo.IdGrupo})" onclick="return confirm('Seguro que desea eliminar el registro');" })"><i class="bi bi-trash-fill"></i></a></td>
+                                </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
