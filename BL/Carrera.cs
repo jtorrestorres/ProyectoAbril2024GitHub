@@ -71,5 +71,47 @@ namespace BL
 
 
         }
+
+        public ML.Result Delte(ML.Carrera carrera)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+
+                DL.Conexion dbConnection = DL.Conexion.GetInstancia();
+                SqlConnection context = dbConnection.GetConnection();
+
+
+                var query = "CarreraDelete";
+
+                SqlCommand command = new SqlCommand(query, context);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@IdCarrera", carrera.IdCarrera);
+
+                int RowAffected = command.ExecuteNonQuery();
+                if (RowAffected > 0)
+                {
+                    result.Correct=true;
+                }
+                else
+                {
+                    result.Correct = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+            }
+            finally
+            {
+                Conexion.GetInstancia().CloseConnection();
+            }
+            return result;
+
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace BL.Interfaces
     public interface ICarrera
     {
         ML.Result GetAll();
+        ML.Result Delete(ML.Carrera carrera);
     }
 }
