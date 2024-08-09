@@ -20,10 +20,23 @@ namespace PL.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete(ML.Carrera carrera)
+        public ActionResult Delete(int idCarrera)
         {
+            ML.Carrera carrera = new ML.Carrera();
+            carrera.IdCarrera = idCarrera;
 
-            return View();
+            ML.Result result = carreraBL.Delete(carrera);
+
+            if (result.Correct)
+            {
+                ViewBag.Mensaje = "Se ha eliminado el registro.";
+            }
+            else
+            {
+                ViewBag.Mensaje = "No se ha eliminado el registro" + result.ErrorMessage;
+            }
+
+            return PartialView("Modal");
         }
     }
 }

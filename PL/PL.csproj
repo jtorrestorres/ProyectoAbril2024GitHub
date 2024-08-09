@@ -258,6 +258,7 @@
     <Content Include="Views\Grupo\Modal.cshtml" />
     <Content Include="Views\Grupo\Form.cshtml" />
     <Content Include="Views\Carrera\GetAll.cshtml" />
+    <Content Include="Views\Carrera\Modal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
