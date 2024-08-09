@@ -8,8 +8,9 @@ namespace ML
 {
     public class Plantel
     {
-        public int IdPlantel { get; set; }
+        public int IdCatalogo { get; set; }
         public string Nombre { get; set; }
-        public List<object> Planteles { get; set; }
+        public string Tipo { get; set; }
+        public List<object> Catalogos { get; set; }
     }
 }
