@@ -12,5 +12,6 @@ namespace BL.Interfaces
         ML.Result Delete(ML.Carrera carrera);
         ML.Result GetById(int idCarrera);
         ML.Result Add(ML.Carrera carrera);
+        ML.Result Update(ML.Carrera carrera);
     }
 }
