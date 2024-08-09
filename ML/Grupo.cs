@@ -12,7 +12,7 @@ namespace ML
         public string Nombre { get; set; }
         public string Turno { get; set; }
         public string Generacion { get; set; }
-        public ML.Carrera Carrera { get; set; }
+        public ML.Catalogo Carrera { get; set; }
         public List<object> Grupos { get; set; }
     }
 }

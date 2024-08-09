@@ -44,12 +44,12 @@ namespace BL
                     result.Objects = new List<object>();
                     foreach (DataRow fila in tablePlantel.Rows)
                     {
-                        ML.Catalogo plantel = new ML.Catalogo();
+                        ML.Catalogo catalogo = new ML.Catalogo();
 
-                        plantel.IdCarrera = int.Parse(fila[0].ToString());
-                        plantel.Nombre = fila[1].ToString();
+                        catalogo.IdCatalogo = int.Parse(fila[0].ToString());
+                        catalogo.Nombre = fila[1].ToString();
 
-                        result.Objects.Add(plantel);
+                        result.Objects.Add(catalogo);
                     }
                     result.Correct = true;
                 }
@@ -72,7 +72,7 @@ namespace BL
 
         }
 
-        public ML.Result Delete(ML.Carrera carrera)
+        public ML.Result Delete(ML.Catalogo catalogo)
         {
             ML.Result result = new ML.Result();
 
@@ -83,11 +83,11 @@ namespace BL
                 SqlConnection context = dbConnection.GetConnection();
 
 
-                var query = "CarreraDelete";
+                var query = "CatalogoDelete";
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@IdCarrera", carrera.IdCarrera);
+                command.Parameters.AddWithValue("@IdPlantel", catalogo.IdCatalogo);
 
                 int RowAffected = command.ExecuteNonQuery();
                 if (RowAffected > 0)
@@ -113,7 +113,7 @@ namespace BL
             return result;
         }
 
-        public ML.Result GetById(int idCarrera)
+        public ML.Result GetById(int idCatalogo)
         {
             ML.Result result = new ML.Result();
 
@@ -123,33 +123,33 @@ namespace BL
                 SqlConnection context = dbConnection.GetConnection();
 
 
-                var query = "CarreraGetById";
+                var query = "PlantelGetById";
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@IdCarrera", idCarrera);
+                command.Parameters.AddWithValue("@IdPlantel", idCatalogo);
 
-                DataTable tableCarrera = new DataTable();
+                DataTable tablePlantel = new DataTable();
 
 
                 DataSet ds = new DataSet();
 
-                ds.Tables.Add(tableCarrera);
+                ds.Tables.Add(tablePlantel);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
 
-                adapter.Fill(tableCarrera);
+                adapter.Fill(tablePlantel);
 
-                if (tableCarrera.Rows.Count > 0)
+                if (tablePlantel.Rows.Count > 0)
                 {
-                    var fila = tableCarrera.Rows[0];
+                    var fila = tablePlantel.Rows[0];
 
-                    ML.Carrera carrera = new ML.Carrera();
+                    ML.Catalogo catalogo = new ML.Catalogo();
 
-                    carrera.IdCarrera = int.Parse(fila[0].ToString());
-                    carrera.Nombre = fila[1].ToString();
+                    catalogo.IdCatalogo = int.Parse(fila[0].ToString());
+                    catalogo.Nombre = fila[1].ToString();
 
-                    result.Object = carrera;
+                    result.Object = catalogo;
                     result.Correct = true;
                 }
             }
@@ -166,7 +166,7 @@ namespace BL
             return result;
         }
 
-        public ML.Result Add(ML.Carrera carrera)
+        public ML.Result Add(ML.Catalogo catalogo)
         {
             ML.Result result = new ML.Result();
 
@@ -177,11 +177,11 @@ namespace BL
                 SqlConnection context = dbConnection.GetConnection();
 
 
-                var query = "CarreraAdd";
+                var query = "PlantelAdd";
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@Nombre", carrera.Nombre);
+                command.Parameters.AddWithValue("@Nombre", catalogo.Nombre);
 
                 int RowAffected = command.ExecuteNonQuery();
                 if (RowAffected > 0)
@@ -207,7 +207,7 @@ namespace BL
             return result;
         }
 
-        public ML.Result Update(ML.Carrera carrera)
+        public ML.Result Update(ML.Catalogo catalogo)
         {
             ML.Result result = new ML.Result();
 
@@ -218,12 +218,12 @@ namespace BL
                 SqlConnection context = dbConnection.GetConnection();
 
 
-                var query = "CarreraUpdate";
+                var query = "PlantelUpdate";
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@IdCarrera", carrera.IdCarrera);
-                command.Parameters.AddWithValue("@Nombre", carrera.Nombre);
+                command.Parameters.AddWithValue("@IdPlantel", catalogo.IdCatalogo);
+                command.Parameters.AddWithValue("@Nombre", catalogo.Nombre);
 
                 int RowAffected = command.ExecuteNonQuery();
                 if (RowAffected > 0)
