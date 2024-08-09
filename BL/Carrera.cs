@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class Carrera :  ICarrera
+    public class Carrera : ICarrera
     {
         public ML.Result GetAll()
         {
@@ -92,7 +92,7 @@ namespace BL
                 int RowAffected = command.ExecuteNonQuery();
                 if (RowAffected > 0)
                 {
-                    result.Correct=true;
+                    result.Correct = true;
                 }
                 else
                 {
@@ -111,7 +111,59 @@ namespace BL
                 Conexion.GetInstancia().CloseConnection();
             }
             return result;
+        }
 
+        public ML.Result GetById(int idCarrera)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                DL.Conexion dbConnection = DL.Conexion.GetInstancia();
+                SqlConnection context = dbConnection.GetConnection();
+
+
+                var query = "CarreraGetById";
+
+                SqlCommand command = new SqlCommand(query, context);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@IdCarrera", idCarrera);
+
+                DataTable tableCarrera = new DataTable();
+
+
+                DataSet ds = new DataSet();
+
+                ds.Tables.Add(tableCarrera);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                adapter.Fill(tableCarrera);
+
+                if (tableCarrera.Rows.Count > 0)
+                {
+                    var fila = tableCarrera.Rows[0];
+
+                    ML.Carrera carrera = new ML.Carrera();
+
+                    carrera.IdCarrera = int.Parse(fila[0].ToString());
+                    carrera.Nombre = fila[1].ToString();
+
+                    result.Object = carrera;
+                    result.Correct = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+            }
+            finally
+            {
+                Conexion.GetInstancia().CloseConnection();
+            }
+            return result;
         }
     }
 }

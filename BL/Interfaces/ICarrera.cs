@@ -10,5 +10,6 @@ namespace BL.Interfaces
     {
         ML.Result GetAll();
         ML.Result Delete(ML.Carrera carrera);
+        ML.Result GetById(int idCarrera);
     }
 }
