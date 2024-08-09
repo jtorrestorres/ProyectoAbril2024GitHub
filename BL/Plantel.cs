@@ -44,7 +44,7 @@ namespace BL
                     result.Objects = new List<object>();
                     foreach (DataRow fila in tablePlantel.Rows)
                     {
-                        ML.Plantel plantel = new ML.Plantel();
+                        ML.Catalogo plantel = new ML.Catalogo();
 
                         plantel.IdCarrera = int.Parse(fila[0].ToString());
                         plantel.Nombre = fila[1].ToString();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ML
 {
-    public class Plantel
+    public class Catalogo
     {
         public int IdCatalogo { get; set; }
         public string Nombre { get; set; }
