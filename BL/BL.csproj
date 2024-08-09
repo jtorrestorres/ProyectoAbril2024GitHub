@@ -46,6 +46,7 @@
     <Compile Include="Interfaces\ICatalogo.cs" />
     <Compile Include="Interfaces\IGrupo.cs" />
     <Compile Include="Moneda.cs" />
+    <Compile Include="Plantel.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Interfaces\IProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
