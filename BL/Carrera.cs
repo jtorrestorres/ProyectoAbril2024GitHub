@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class Carrera : ICarrera
+    public class Carrera : ICatalogo
     {
         public ML.Result GetAll()
         {

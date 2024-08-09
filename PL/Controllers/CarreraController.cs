@@ -54,7 +54,7 @@ namespace PL.Controllers
             ML.Result result=new ML.Result();
             if (carrera.IdCarrera>0)
             {
-
+                result = carreraBL.Update(carrera);
             }
             else
             {
