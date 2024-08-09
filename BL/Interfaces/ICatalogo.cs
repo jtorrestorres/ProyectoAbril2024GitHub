@@ -9,9 +9,9 @@ namespace BL.Interfaces
     public interface ICatalogo
     {
         ML.Result GetAll();
-        ML.Result Delete(ML.Catalogo catalogo);
-        ML.Result GetById(int idCatalogo);
-        ML.Result Add(ML.Catalogo catalogo);
-        ML.Result Update(ML.Catalogo catalogo);
+        ML.Result Delete(ML.Carrera carrera);
+        ML.Result GetById(int idCarrera);
+        ML.Result Add(ML.Carrera carrera);
+        ML.Result Update(ML.Carrera carrera);
     }
 }

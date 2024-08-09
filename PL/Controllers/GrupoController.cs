@@ -27,7 +27,7 @@ namespace PL.Controllers
         public ActionResult Form(int idGrupo)
         {
             ML.Grupo grupo=new ML.Grupo();
-            grupo.Carrera =new ML.Catalogo();
+            grupo.Carrera =new ML.Carrera();
             ML.Result resultCarrera = carreraBL.GetAll();
 
             if (idGrupo > 0)

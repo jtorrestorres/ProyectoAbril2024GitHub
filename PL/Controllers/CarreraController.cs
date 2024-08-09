@@ -14,7 +14,7 @@ namespace PL.Controllers
         [HttpGet]
         public ActionResult GetAll()
         {
-            ML.Catalogo carrera = new ML.Catalogo();
+            ML.Carrera carrera = new ML.Carrera();
             ML.Result result = carreraBL.GetAll();
             carrera.Carreras = result.Objects;
             return View(carrera);
@@ -23,14 +23,14 @@ namespace PL.Controllers
         [HttpGet]
         public ActionResult Form(int idCarrera)
         {
-            ML.Catalogo carrera = new ML.Catalogo();
+            ML.Carrera carrera = new ML.Carrera();
             if (idCarrera>0)
             {
                 ML.Result result=carreraBL.GetById(idCarrera);
 
                 if (result.Correct)
                 {
-                    carrera = (ML.Catalogo) result.Object;
+                    carrera = (ML.Carrera) result.Object;
 
                 }
                 else
@@ -49,7 +49,7 @@ namespace PL.Controllers
         }
 
         [HttpPost]
-        public ActionResult Form(ML.Catalogo carrera)
+        public ActionResult Form(ML.Carrera carrera)
         {
             ML.Result result=new ML.Result();
             if (carrera.IdCarrera>0)
@@ -75,7 +75,7 @@ namespace PL.Controllers
         [HttpGet]
         public ActionResult Delete(int idCarrera)
         {
-            ML.Catalogo carrera = new ML.Catalogo();
+            ML.Carrera carrera = new ML.Carrera();
             carrera.IdCarrera = idCarrera;
 
             ML.Result result = carreraBL.Delete(carrera);

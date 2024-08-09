@@ -44,9 +44,9 @@ namespace BL
                     result.Objects = new List<object>();
                     foreach (DataRow fila in tableCarrera.Rows)
                     {
-                        ML.Catalogo carrera = new ML.Catalogo();
+                        ML.Carrera carrera = new ML.Carrera();
 
-                        carrera.IdCatalogo = int.Parse(fila[0].ToString());
+                        carrera.IdCarrera = int.Parse(fila[0].ToString());
                         carrera.Nombre = fila[1].ToString();
 
                         result.Objects.Add(carrera);
@@ -72,7 +72,7 @@ namespace BL
 
         }
 
-        public ML.Result Delete(ML.Catalogo catalogo)
+        public ML.Result Delete(ML.Carrera carrera)
         {
             ML.Result result = new ML.Result();
 
@@ -87,7 +87,7 @@ namespace BL
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@IdCarrera", catalogo.IdCatalogo);
+                command.Parameters.AddWithValue("@IdCarrera", carrera.IdCarrera);
 
                 int RowAffected = command.ExecuteNonQuery();
                 if (RowAffected > 0)
@@ -113,7 +113,7 @@ namespace BL
             return result;
         }
 
-        public ML.Result GetById(int idCatalogo)
+        public ML.Result GetById(int idCarrera)
         {
             ML.Result result = new ML.Result();
 
@@ -127,7 +127,7 @@ namespace BL
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@IdCarrera", idCatalogo);
+                command.Parameters.AddWithValue("@IdCarrera", idCarrera);
 
                 DataTable tableCarrera = new DataTable();
 
@@ -144,12 +144,12 @@ namespace BL
                 {
                     var fila = tableCarrera.Rows[0];
 
-                    ML.Catalogo catalogo = new ML.Catalogo();
+                    ML.Carrera carrera = new ML.Carrera();
 
-                    catalogo.IdCatalogo = int.Parse(fila[0].ToString());
-                    catalogo.Nombre = fila[1].ToString();
+                    carrera.IdCarrera = int.Parse(fila[0].ToString());
+                    carrera.Nombre = fila[1].ToString();
 
-                    result.Object = catalogo;
+                    result.Object = carrera;
                     result.Correct = true;
                 }
             }
@@ -166,7 +166,7 @@ namespace BL
             return result;
         }
 
-        public ML.Result Add(ML.Catalogo catalogo)
+        public ML.Result Add(ML.Carrera carrera)
         {
             ML.Result result = new ML.Result();
 
@@ -181,7 +181,7 @@ namespace BL
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@Nombre", catalogo.Nombre);
+                command.Parameters.AddWithValue("@Nombre", carrera.Nombre);
 
                 int RowAffected = command.ExecuteNonQuery();
                 if (RowAffected > 0)
@@ -207,7 +207,7 @@ namespace BL
             return result;
         }
 
-        public ML.Result Update(ML.Catalogo catalogo)
+        public ML.Result Update(ML.Carrera carrera)
         {
             ML.Result result = new ML.Result();
 
@@ -222,8 +222,8 @@ namespace BL
 
                 SqlCommand command = new SqlCommand(query, context);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@IdCarrera", catalogo.IdCatalogo);
-                command.Parameters.AddWithValue("@Nombre", catalogo.Nombre);
+                command.Parameters.AddWithValue("@IdCarrera", carrera.IdCarrera);
+                command.Parameters.AddWithValue("@Nombre", carrera.Nombre);
 
                 int RowAffected = command.ExecuteNonQuery();
                 if (RowAffected > 0)

@@ -51,7 +51,7 @@ namespace BL
                         grupo.Nombre = fila[1].ToString();
                         grupo.Turno = fila[2].ToString();
                         grupo.Generacion = fila[3].ToString();
-                        grupo.Carrera = new ML.Catalogo();
+                        grupo.Carrera = new ML.Carrera();
                         grupo.Carrera.IdCarrera = int.Parse(fila[4].ToString());
                         grupo.Carrera.Nombre = fila[5].ToString();
 
@@ -161,7 +161,7 @@ namespace BL
                     grupo.Nombre = fila[1].ToString();
                     grupo.Turno = fila[2].ToString();
                     grupo.Generacion = fila[3].ToString();
-                    grupo.Carrera = new ML.Catalogo();
+                    grupo.Carrera = new ML.Carrera();
                     grupo.Carrera.IdCarrera = int.Parse(fila[4].ToString());
                     grupo.Carrera.Nombre = fila[5].ToString();
                     result.Object = grupo;
