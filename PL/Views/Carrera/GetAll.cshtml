@@ -7,13 +7,19 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <h2>Carreras</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
             <h5>Selecciona una carrera para eliminar o editar. Selecciona + para agregar una nueva carrera.</h5>
             <hr />
         </div>
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 offset-11">
             @Html.ActionLink("+", "Form", new { idCarrera = 0 }, new { @class = "btn btn-success" })
         </div>
     </div>

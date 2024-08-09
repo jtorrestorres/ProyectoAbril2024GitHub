@@ -8,11 +8,15 @@ namespace PL.Controllers
 {
     public class CarreraController : Controller
     {
+        BL.Carrera carreraBL = new BL.Carrera();
         // GET: Carrera
         [HttpGet]
         public ActionResult GetAll()
         {
-            return View();
+            ML.Carrera carrera = new ML.Carrera();
+            ML.Result result = carreraBL.GetAll();
+            carrera.Carreras = result.Objects;
+            return View(carrera);
         }
     }
 }
