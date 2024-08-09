@@ -18,5 +18,12 @@ namespace PL.Controllers
             carrera.Carreras = result.Objects;
             return View(carrera);
         }
+
+        [HttpGet]
+        public ActionResult Delete(ML.Carrera carrera)
+        {
+
+            return View();
+        }
     }
 }
