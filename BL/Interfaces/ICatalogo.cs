@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL.Interfaces
 {
-    public interface ICarrera
+    public interface ICatalogo
     {
         ML.Result GetAll();
         ML.Result Delete(ML.Carrera carrera);

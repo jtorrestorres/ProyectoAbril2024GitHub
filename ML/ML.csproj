@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Carrera.cs" />
     <Compile Include="Grupo.cs" />
+    <Compile Include="Plantel.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
