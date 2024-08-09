@@ -1,0 +1,31 @@
+﻿@model ML.Carrera
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Form", "Carrera", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.IdCarrera)
+    <div class="row mb-3">
+        <div class="col-3">
+            <h3>Formulario Carrera</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            @Html.LabelFor(mode => mode.Nombre)
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-1 offset-4">
+            <button type="submit" class="btn btn-success">Agregar</button>
+        </div>
+        <div class="col-1 offset-1">
+            @Html.ActionLink("Cancelar", "GetAll", new { IdCarrera = 0 }, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+}
+

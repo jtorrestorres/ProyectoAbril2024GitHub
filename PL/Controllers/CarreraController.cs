@@ -20,6 +20,34 @@ namespace PL.Controllers
         }
 
         [HttpGet]
+        public ActionResult Form(int idCarrera)
+        {
+            ML.Carrera carrera = new ML.Carrera();
+            if (idCarrera>0)
+            {
+                ML.Result result=carreraBL.GetById(idCarrera);
+
+                if (result.Correct)
+                {
+                    carrera = (ML.Carrera) result.Object;
+
+                }
+                else
+                {
+                    ViewBag.Mensaje = "No se ha encontrado el registro" + result.ErrorMessage;
+                    return PartialView("Model");
+                }
+
+            }
+            else
+            {
+                return View(carrera);
+            }
+
+            return View(carrera);
+        }
+
+        [HttpGet]
         public ActionResult Delete(int idCarrera)
         {
             ML.Carrera carrera = new ML.Carrera();
