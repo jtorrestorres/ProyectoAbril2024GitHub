@@ -72,7 +72,7 @@ namespace BL
 
         }
 
-        public ML.Result Delte(ML.Carrera carrera)
+        public ML.Result Delete(ML.Carrera carrera)
         {
             ML.Result result = new ML.Result();
 
